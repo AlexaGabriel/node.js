@@ -1,0 +1,12 @@
+body {
+  background-color: #4d4d4d;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+a {
+  color: rgb(189, 189, 189);
+}
+img {
+  width: 100px;
+  height: 200px;
+}

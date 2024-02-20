@@ -1,0 +1,12 @@
+<h1>Livros disponiveis</h1>
+<ol>
+  {{#each books}}
+    <li>o nome do livro é
+      <a href="/books/{{id}}">{{title}}</a>
+      e ele tem
+      {{page}}
+      paginas.
+
+    </li>
+  {{/each}}
+</ol>

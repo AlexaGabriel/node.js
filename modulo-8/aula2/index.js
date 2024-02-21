@@ -74,6 +74,18 @@ app.get("/books/edit/:id", (req, res) => {
     res.render("editbook", { book });
   });
 });
+app.post("/book/remove/:id", (req, res) => {
+  const id = req.params.id;
+  const query = `DELETE FROM books WHERE id = ${id}`;
+  conect.query(query, function (err) {
+    if (err) {
+      console.log(err);
+      return res.status(500).send("Erro ao buscar o livro");
+    }
+    res.redirect("/books");
+  });
+});
+
 app.post("/books/update", function (req, res) {
   const id = req.body.id;
   const title = req.body.title;

@@ -15,6 +15,6 @@ const adress = db.define("adress", {
     allowNull: false,
   },
 });
-
+User.hasMany(adress);
 adress.belongsTo(User);
 module.exports = adress;

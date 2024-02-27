@@ -29,8 +29,8 @@ app.get("/user/add", (req, res) => {
 });
 app.get("/user/:id", async (req, res) => {
   const id = req.params.id;
-  const user = await User.findOne({ raw: true, where: { id: id } });
-  res.render("userview", { user });
+  const user = await User.findOne({ include: adress, where: { id: id } });
+  res.render("userview", { user: user.get({ plain: true }) });
 });
 app.post("/user/add", async (req, res) => {
   const name = req.body.name;
@@ -89,7 +89,12 @@ app.post("/adress/create", async (req, res) => {
   await adress.create(Adress);
   res.redirect(`/user/edit/${UserId}`);
 });
-
+app.post("/adress/delete", async (req, res) => {
+  const id = req.body.id;
+  const UserId = req.body.UserId;
+  await adress.destroy({ where: { id: id } });
+  res.redirect(`/user/edit/${UserId}`);
+});
 conect
   .sync()
   //.sync({ force: true })
